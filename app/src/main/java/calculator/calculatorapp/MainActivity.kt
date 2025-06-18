@@ -45,11 +45,25 @@ class MainActivity : AppCompatActivity() {
             val sum = num1.toInt() + num2.toInt()
             tvResult.text = sum.toString()
         }
-//        btnMinus.setOnClickListener{
-//            var num1 = etNum1.text.toString()
-//            var num2 = etNum2.text.toString()
-//            val difference = num1.toInt() - num2.toInt()
-//            tvResult.text = difference.toString()
-//        }
+        btnMinus.setOnClickListener{
+            var num1= etNum1.text.toString()
+            var num2 = etNum2.text.toString()
+            val difference = num1.toInt() - num2.toInt()
+            tvResult.text = difference.toString()
+        }
+
+        btnMultiply.setOnClickListener{
+            var num1 = etNum1.text.toString()
+            var num2 = etNum2.text.toString()
+            val product = num1.toInt() * num2.toInt()
+            tvResult.text = product.toString()
+        }
+
+        btnDivide.setOnClickListener{
+            var num1 = etNum1.text.toString()
+            var num2 = etNum2.text.toString()
+            val quotient = num1.toInt() / num2.toInt()
+            tvResult.text = quotient.toString()
+        }
     }
 }
