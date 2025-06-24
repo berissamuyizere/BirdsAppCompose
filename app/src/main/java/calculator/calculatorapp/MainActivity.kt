@@ -36,34 +36,46 @@ class MainActivity : AppCompatActivity() {
         btnMinus = findViewById(R.id.btnMinus)
         btnMultiply = findViewById(R.id.btnMultiply)
         btnDivide = findViewById(R.id.btnDivide)
+        tvResult = findViewById(R.id.tvResult)
     }
     override fun onResume(){
     super.onResume()
         btnAdd.setOnClickListener{
-            var num1 = etNum1.text.toString()
-            var num2 = etNum2.text.toString()
-            val sum = num1.toInt() + num2.toInt()
-            tvResult.text = sum.toString()
+            obtainValues("+")
         }
         btnMinus.setOnClickListener{
-            var num1= etNum1.text.toString()
-            var num2 = etNum2.text.toString()
-            val difference = num1.toInt() - num2.toInt()
-            tvResult.text = difference.toString()
-        }
+            obtainValues("-")
 
+        }
         btnMultiply.setOnClickListener{
-            var num1 = etNum1.text.toString()
-            var num2 = etNum2.text.toString()
-            val product = num1.toInt() * num2.toInt()
-            tvResult.text = product.toString()
+             obtainValues("x")
         }
 
         btnDivide.setOnClickListener{
-            var num1 = etNum1.text.toString()
-            var num2 = etNum2.text.toString()
-            val quotient = num1.toInt() / num2.toInt()
-            tvResult.text = quotient.toString()
+            obtainValues("/")
         }
+    }
+
+    fun obtainValues( symbol: String){
+        var num1 = etNum1.text.toString()
+        var num2 = etNum2.text.toString()
+
+        if(num1.isBlank()){
+            etNum1.error = "Num1 is required"
+            return
+            }
+        if(num2.isBlank()){
+            etNum2.error = "Num2 is required"
+            return
+        }
+
+        val result = when(symbol){
+            "+" ->  num1.toDouble() + num2.toInt()
+            "-" ->  num1.toDouble() - num2.toInt()
+            "x" ->  num1.toDouble() * num2.toInt()
+            "/" ->  num1.toDouble() / num2.toInt()
+            else -> 0.0
+        }
+        tvResult.text = result.toString()
     }
 }
